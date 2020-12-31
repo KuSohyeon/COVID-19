@@ -5,22 +5,17 @@ public class DayGlobal {
 	private String areaName;
 	private String nationName;
 	private int defCnt;
-	private int defTrans;
 	private int deathCnt;
-	private int deathTrans;
 	
 	public DayGlobal() {}
 
-	public DayGlobal(String stdDay, String areaName, String nationName, int defCnt, int defTrans, int deathCnt,
-			int deathTrans) {
+	public DayGlobal(String stdDay, String areaName, String nationName, int defCnt, int deathCnt) {
 		super();
 		this.stdDay = stdDay;
 		this.areaName = areaName;
 		this.nationName = nationName;
 		this.defCnt = defCnt;
-		this.defTrans = defTrans;
 		this.deathCnt = deathCnt;
-		this.deathTrans = deathTrans;
 	}
 
 	public String getStdDay() {
@@ -55,14 +50,6 @@ public class DayGlobal {
 		this.defCnt = defCnt;
 	}
 
-	public int getDefTrans() {
-		return defTrans;
-	}
-
-	public void setDefTrans(int defTrans) {
-		this.defTrans = defTrans;
-	}
-
 	public int getDeathCnt() {
 		return deathCnt;
 	}
@@ -70,12 +57,7 @@ public class DayGlobal {
 	public void setDeathCnt(int deathCnt) {
 		this.deathCnt = deathCnt;
 	}
+	
+	
 
-	public int getDeathTrans() {
-		return deathTrans;
-	}
-
-	public void setDeathTrans(int deathTrans) {
-		this.deathTrans = deathTrans;
-	}
 }

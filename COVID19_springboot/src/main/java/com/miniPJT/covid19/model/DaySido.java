@@ -4,20 +4,16 @@ public class DaySido {
 	private String stdDay;
 	private String sido;
 	private int defCnt;
-	private int defTrans;
 	private int deathCnt;
-	private int deathTrans;
 	
 	public DaySido() {}
 	
-	public DaySido(String stdDay, String sido, int defCnt, int defTrans, int deathCnt, int deathTrans) {
+	public DaySido(String stdDay, String sido, int defCnt, int deathCnt) {
 		super();
 		this.stdDay = stdDay;
 		this.sido = sido;
 		this.defCnt = defCnt;
-		this.defTrans = defTrans;
 		this.deathCnt = deathCnt;
-		this.deathTrans = deathTrans;
 	}
 
 	public String getStdDay() {
@@ -44,14 +40,6 @@ public class DaySido {
 		this.defCnt = defCnt;
 	}
 
-	public int getDefTrans() {
-		return defTrans;
-	}
-
-	public void setDefTrans(int defTrans) {
-		this.defTrans = defTrans;
-	}
-
 	public int getDeathCnt() {
 		return deathCnt;
 	}
@@ -60,11 +48,4 @@ public class DaySido {
 		this.deathCnt = deathCnt;
 	}
 
-	public int getDeathTrans() {
-		return deathTrans;
-	}
-
-	public void setDeathTrans(int deathTrans) {
-		this.deathTrans = deathTrans;
-	}
 }
