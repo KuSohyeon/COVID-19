@@ -1,1 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.miniPJT.covid19.mapper.GlobalMapper">
+	
+	<select id="todayGlobal" resultType="DayGlobal">
+		select *
+		from day_global
+		where stdDay = (select current_date())
+	</select>
+	
+	<select id="totalToday" resultType="TotalGlobal">
+		select *
+		from total_global
+		order by stdDay desc
+		limit 1
+	</select>
+		
+	<select id="total7Days" resultType="TotalGlobal">
+		select *
+		from total_global
+		order by stdDay desc
+		limit 7
+	</select>
+
+</mapper>
