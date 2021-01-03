@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -15,13 +16,16 @@ import org.w3c.dom.NodeList;
 
 import com.miniPJT.covid19.model.DayGlobal;
 
+@Component
 public class GlobalAPIExplorer {
-	@Value("${world.corona.service.key}")
-	private static String ServiceKey;
 	
-	public static List<DayGlobal> save() throws Exception {
+	@Value("${world.covid19.service.key}")
+	private String ServiceKey;
+	
+	public List<DayGlobal> save() throws Exception {
 		List<DayGlobal> dayGlobal = new ArrayList<DayGlobal>();
 		String today = DateFormat.format();
+		System.out.println(today);
 
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson"); /* URL */

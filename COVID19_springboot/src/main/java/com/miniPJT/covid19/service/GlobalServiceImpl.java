@@ -16,31 +16,43 @@ public class GlobalServiceImpl implements GlobalService {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	/** 오늘 날짜 insert(day) */
 	@Override
 	public void insertToday(List<DayGlobal> list) throws Exception {
-		sqlSession.getMapper(GlobalMapper.class).insertToday(list);
+		for(DayGlobal day : list) {
+			sqlSession.getMapper(GlobalMapper.class).insertToday(day);
+		}
 	}
-
+	
+	/** 오늘 날짜 업데이트(day)*/
+	@Override
+	public void updateDayGlobal() throws Exception {
+		sqlSession.getMapper(GlobalMapper.class).updateDayGlobal();
+	}
+	
+	/** 오늘 날짜 insert(total) */
 	@Override
 	public void insertTotal() throws Exception {
 		sqlSession.getMapper(GlobalMapper.class).insertTotal();
 	}
 
+	/** 나라별 오늘 확진자 정보 반환 */
 	@Override
 	public List<DayGlobal> todayGlobal() throws Exception {
 		return sqlSession.getMapper(GlobalMapper.class).todayGlobal();
 	}
 	
+	/** 오늘 날짜 총 확진자 반환  */
 	@Override
 	public TotalGlobal totalToday() throws Exception {
 		return sqlSession.getMapper(GlobalMapper.class).totalToday();
 	}
-
+	
+	/** 최근 7일 간 총 확진자 반환 */
 	@Override
 	public List<TotalGlobal> total7Days() throws Exception {
 		return sqlSession.getMapper(GlobalMapper.class).total7Days();
 	}
 
-	
 	
 }

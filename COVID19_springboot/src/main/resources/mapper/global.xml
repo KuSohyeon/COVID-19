@@ -2,11 +2,58 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.miniPJT.covid19.mapper.GlobalMapper">
+
+	<insert id = "insertToday" parameterType="DayGlobal">
+		insert into day (stdDay,areaName,nationName,defCnt,deathCnt)
+		values (#{stdDay}, #{areaName}, #{nationName}, #{defCnt}, #{deathCnt});
+	</insert>
+	
+	<update id="updateDayGlobal">
+		update day d
+		set dayDefCnt = (select t.defCnt - y.defCnt
+						from day_global y inner join day_global t
+		                using (nationName)
+		                where t.stdDay = (select current_date )
+						and y.stdDay = (select current_date - interval 1 day)
+		                and d.nationName = t.nationName 
+		                and d.stdDay = t.stdDay
+		                )
+		,dayDeathCnt = (select t.deathCnt - y.deathCnt
+						from day_global y inner join day_global t
+		                using (nationName)
+		                where d.nationName = t.nationName
+		                and t.stdDay = (select current_date)
+						and y.stdDay = (select current_date - interval 1 day)
+		                  and d.stdDay = t.stdDay
+		                )
+		  where stdDay = (select current_date);
+	</update>
+
+	<insert id="insertTotal">
+		insert into total_global (stdDay, defCnt,  deathCnt, daydefcnt, daydeathCnt)
+		values (
+				(select current_date()),
+				(select sum(defCnt) from day_global where stdDay = (select current_date())),
+				(select sum(deathCnt) from day_global where stdDay = (select current_date())),
+				(select sum(today.defCnt)-sum(yester.defCnt)
+				from day_global yester join day_global today
+				using (nationName)
+				where yester.stdDay =  (select current_date() - interval 1 day)
+				and today.stdDay =  (select current_date())
+				),
+				(select sum(today.deathCnt)-sum(yester.deathCnt)
+				from day_global yester join day_global today
+				using (nationName)
+				where yester.stdDay =  (select current_date() - interval 1 day)
+				and today.stdDay =  (select current_date())
+				));
+	</insert>
 	
 	<select id="todayGlobal" resultType="DayGlobal">
 		select *
 		from day_global
-		where stdDay = (select current_date())
+		order by stdDay desc, dayDefCnt desc
+		limit 189;
 	</select>
 	
 	<select id="totalToday" resultType="TotalGlobal">
