@@ -5,7 +5,6 @@ target/
 !**/src/test/**/target/
 
 ### STS ###
-.properties
 .apt_generated
 .classpath
 .factorypath
@@ -13,6 +12,7 @@ target/
 .settings
 .springBeans
 .sts4-cache
+.properties
 
 ### IntelliJ IDEA ###
 .idea
