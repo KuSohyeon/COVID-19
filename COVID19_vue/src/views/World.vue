@@ -1,14 +1,18 @@
 <template>
      <v-container>
-           <h1 class="white--text">해외</h1>
+           
+           <global-today></global-today>
            <global-list></global-list>
     </v-container>
 </template>
 <script>
+import GlobalToday from '@/components/world/GlobalToday.vue';
 import GlobalList from '@/components/world/GlobalList.vue';
+
 export default {
     components: {
-        GlobalList
+        GlobalList,
+        GlobalToday,
     }
 }
 </script>
