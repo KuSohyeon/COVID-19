@@ -9,22 +9,28 @@
 	</insert>
 	
 	<update id="updateDayGlobal">
-		update day d
-		set dayDefCnt = (select t.defCnt - y.defCnt
-						from day_global y inner join day_global t
+		update day_global as d
+		set dayDefCnt = (select *
+						from
+                        (select t.defCnt - y.defCnt 
+                        from day_global y inner join day_global t
 		                using (nationName)
-		                where t.stdDay = (select current_date )
+		                where t.stdDay = (select current_date)
 						and y.stdDay = (select current_date - interval 1 day)
 		                and d.nationName = t.nationName 
 		                and d.stdDay = t.stdDay
-		                )
-		,dayDeathCnt = (select t.deathCnt - y.deathCnt
+		                ) as tmp
+                        )
+		,dayDeathCnt = (select *
+						from
+                        (select t.deathCnt - y.deathCnt
 						from day_global y inner join day_global t
 		                using (nationName)
 		                where d.nationName = t.nationName
 		                and t.stdDay = (select current_date)
 						and y.stdDay = (select current_date - interval 1 day)
 		                  and d.stdDay = t.stdDay
+						) as tmp2
 		                )
 		  where stdDay = (select current_date);
 	</update>
