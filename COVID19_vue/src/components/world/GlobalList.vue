@@ -32,6 +32,7 @@
 import axios from 'axios';
 export default {
      name: 'GlobalList',
+     
     data () {
       return {
         headers: [
