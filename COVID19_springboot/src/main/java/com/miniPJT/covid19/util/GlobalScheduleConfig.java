@@ -16,13 +16,6 @@ import com.miniPJT.covid19.service.GlobalService;
 @Configuration
 @EnableScheduling
 public class GlobalScheduleConfig {
-//	@Bean
-//	public TaskScheduler schduler() {
-//		ThreadPoolTaskScheduler scheduler = new ThreadPoolTaskScheduler();
-//		scheduler.setPoolSize(4);
-//		return scheduler;
-//	}
-	
 	@Autowired
 	private GlobalService globalService;
 	@Autowired
@@ -34,7 +27,6 @@ public class GlobalScheduleConfig {
 		List<DayGlobal> list = null;
 		try {
 			list = globalApi.save();
-//			System.out.println(list);
 			globalService.insertToday(list); // 오늘 day_global insert
 			globalService.updateDayGlobal(); // 오늘 나라별 추가 확진자 update(day_global) 
 			globalService.insertTotal(); // 오늘 세계 총 확진자(total_global) insert
