@@ -4,7 +4,7 @@
 <mapper namespace="com.miniPJT.covid19.mapper.GlobalMapper">
 
 	<insert id = "insertToday" parameterType="DayGlobal">
-		insert into day (stdDay,areaName,nationName,defCnt,deathCnt)
+		insert into day_global (stdDay,areaName,nationName,defCnt,deathCnt)
 		values (#{stdDay}, #{areaName}, #{nationName}, #{defCnt}, #{deathCnt});
 	</insert>
 	
