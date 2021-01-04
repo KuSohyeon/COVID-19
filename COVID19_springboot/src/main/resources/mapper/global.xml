@@ -71,9 +71,12 @@
 		
 	<select id="total7Days" resultType="TotalGlobal">
 		select *
-		from total_global
-		order by stdDay desc
-		limit 7
+		from (
+				select *
+				from total_global
+				order by stdDay desc
+				limit 7) as a
+		order by stdDay;
 	</select>
 
 </mapper>
