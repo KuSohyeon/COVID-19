@@ -1,9 +1,8 @@
 <template>
-  <v-container class="home">
+  <v-container class="home text-center">
     
-      <p class="white--text">메인페이지.</p>
-        <router-link to="/korea" class="text-decoration-none "><v-btn text class="white--text">국내</v-btn></router-link>
-        <router-link to="/world" class="text-decoration-none"><v-btn text class="white--text">해외</v-btn></router-link>
+        <router-link to="/korea" class="text-decoration-none "><v-btn text class="white--text"><b>국내</b></v-btn></router-link>
+        <router-link to="/world" class="text-decoration-none"><v-btn text class="white--text"><b>해외</b></v-btn></router-link>
     
         <router-view></router-view>
    
