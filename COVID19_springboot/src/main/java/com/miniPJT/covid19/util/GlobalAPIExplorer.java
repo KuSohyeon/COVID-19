@@ -25,7 +25,6 @@ public class GlobalAPIExplorer {
 	public List<DayGlobal> save() throws Exception {
 		List<DayGlobal> dayGlobal = new ArrayList<DayGlobal>();
 		String today = DateFormat.format();
-		System.out.println(today);
 
 		StringBuilder urlBuilder = new StringBuilder(
 				"http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19NatInfStateJson"); /* URL */
