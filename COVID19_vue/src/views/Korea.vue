@@ -1,17 +1,22 @@
 <template>
-    <v-container>
-        <h1 class="white--text">국내</h1>
-        <tmp/>
-    </v-container>
+  <v-container>
+    <div>
+      <korea-total></korea-total>
+      <korea-graph></korea-graph>
+      <korea-list></korea-list>
+    </div>
+  </v-container>
 </template>
 <script>
-import Tmp from "@/components/korea/Tmp.vue"
+import KoreaTotal from '../components/korea/KoreaTotal.vue';
+import KoreaGraph from '../components/korea/KoreaGraph.vue';
+import KoreaList from '../components/korea/KoreaList.vue';
 export default {
-    components: {
-        Tmp,
-    }
-}
+  components: {
+    KoreaList,
+    KoreaTotal,
+    KoreaGraph,
+  },
+};
 </script>
-<style scoped>
-
-</style>
+<style scoped></style>

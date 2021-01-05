@@ -137,16 +137,16 @@ public class SidoController {
 				String gubun = getTagValue("gubun", eElement);
 				System.out.println("지역 : " + gubun);
 				sido.setSido(gubun);
-				String stdDay = getTagValue("stdDay", eElement);
-				System.out.println("기준일시  : " + stdDay);
-				sido.setStdDay(stdDay);
+//				String stdDay = getTagValue("stdDay", eElement);
+//				System.out.println("기준일시  : " + stdDay);
+				sido.setStdDay(today);
 				
 				TotalSido tSido = selectYesterdayTotal(gubun);
 				int yDeathCnt = tSido.getDeathCnt() + deathCnt;
 				int yDefCnt = tSido.getDefCnt() + defCnt;
 				tSido.setDeathCnt(yDeathCnt);
 				tSido.setDefCnt(yDefCnt);
-				tSido.setStdDay(stdDay);
+				tSido.setStdDay(today);
 
 				totalList.add(tSido);
 				list.add(sido);
@@ -166,7 +166,7 @@ public class SidoController {
 	public TotalSido selectYesterdayTotal(String sido) {
 		Date dDate = new Date();
 		dDate = new Date(dDate.getTime()+(1000*60*60*24*-1));
-		SimpleDateFormat dSdf = new SimpleDateFormat("yyyy년 MM월 dd일 00시");
+		SimpleDateFormat dSdf = new SimpleDateFormat("yyyyMMdd");
 		String yesterday = dSdf.format(dDate);
 		System.out.println(yesterday);
 		
@@ -183,9 +183,9 @@ public class SidoController {
 	}
 	
 //	오늘 날짜 기준 총 확진/사망자 수 가져오기
-	@GetMapping
+	@GetMapping("/korea")
 	public List<TotalSido> selectTotal() {
-		String pattern = "yyyy년 MM월 dd일 00시";
+		String pattern = "yyyyMMdd";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 		String today = simpleDateFormat.format(new Date());
 		System.out.println(today);
@@ -201,7 +201,7 @@ public class SidoController {
 //	오늘 날짜 기준 일일 확진/사망자 수 가져오기
 	@GetMapping
 	public List<DaySido> selectToday() {
-		String pattern = "yyyy년 MM월 dd일 00시";
+		String pattern = "yyyyMMdd";
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 		String today = simpleDateFormat.format(new Date());
 		System.out.println(today);
