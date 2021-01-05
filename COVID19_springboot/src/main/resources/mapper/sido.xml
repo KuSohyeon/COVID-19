@@ -1,1 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.miniPJT.coivd19.mapper.SidoMapper">
+
+	<insert id="insertWeek" parameterType="java.util.List">
+		insert into day_sido (stdDay, sido, defCnt, deathCnt)
+		values (
+			<foreach collection="list" item="item" separator=",">
+				#{stdDay}, #{sido}, #{defCnt}, #{deathCnt}
+			</foreach>
+		)
+	</insert>
+
+	<insert id="insertToday" parameterType="java.util.List">
+		insert into day_sido (stdDay, sido, defCnt, deathCnt)
+		values (
+			<foreach collection="list" item="item" separator=",">
+				#{stdDay}, #{sido}, #{defCnt}, #{deathCnt}
+			</foreach>
+		)
+	</insert>
+	
+	<insert id="insertTotal" parameterType="TotalSido">
+		insert into day_sido (defCnt, deathCnt, stdDay, sido)
+		values (#{defCnt}, #{deathCnt}, #{stdDay}, #{sido})
+	</insert>
+	
+	<select id="selectYesterdayTotal" parameterType="map" resultType="TotalSido">
+		select defCnt, deathCnt, sido
+		from total_sido
+		where stdDay = #{stdDay}
+		and sido = #{sido}
+	</select>
+	
+	<select id="selectTotal" parameterType="string" resultType="TotalSido">
+		select defCnt, deathCnt, sido
+		from total_sido
+		where stdDay = #{stdDay}
+	</select>
+	
+	<select id="selectDay" parameterType="string" resultType="DaySido">
+		select defCnt, deathCnt, sido
+		from total_sido
+		where stdDay = #{stdDay}
+	</select>
+
+</mapper>
