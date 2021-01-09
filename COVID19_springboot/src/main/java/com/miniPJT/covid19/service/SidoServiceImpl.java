@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.miniPJT.covid19.mapper.SidoMapper;
 import com.miniPJT.covid19.model.DaySido;
 import com.miniPJT.covid19.model.TotalSido;
 
+@Service
 public class SidoServiceImpl implements SidoService {
 	@Autowired
 	private SqlSession session;
@@ -42,6 +44,16 @@ public class SidoServiceImpl implements SidoService {
 	@Override
 	public TotalSido selectYesterdayTotal(Map<String, String> yTotal) throws Exception {
 		return session.getMapper(SidoMapper.class).selectYesterdayTotal(yTotal);
+	}
+
+	@Override
+	public DaySido selectYesterdayToday(Map<String, String> yTotal) throws Exception {
+		return session.getMapper(SidoMapper.class).selectYesterdayToday(yTotal);
+	}
+
+	@Override
+	public List<TotalSido> selectWeek() throws Exception {
+		return session.getMapper(SidoMapper.class).selectWeek();
 	}
 
 }

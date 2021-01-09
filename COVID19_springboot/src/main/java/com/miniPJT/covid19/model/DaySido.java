@@ -3,17 +3,21 @@ package com.miniPJT.covid19.model;
 public class DaySido {
 	private String stdDay;
 	private String sido;
-	private int defCnt;
-	private int deathCnt;
+	private int dayDefCnt;
+	private int dayDeathCnt;
+	private int totalDefCnt;
+	private int totalDeathCnt;
 	
 	public DaySido() {}
-	
-	public DaySido(String stdDay, String sido, int defCnt, int deathCnt) {
+
+	public DaySido(String stdDay, String sido, int dayDefCnt, int dayDeathCnt, int totalDefCnt, int totalDeathCnt) {
 		super();
 		this.stdDay = stdDay;
 		this.sido = sido;
-		this.defCnt = defCnt;
-		this.deathCnt = deathCnt;
+		this.dayDefCnt = dayDefCnt;
+		this.dayDeathCnt = dayDeathCnt;
+		this.totalDefCnt = totalDefCnt;
+		this.totalDeathCnt = totalDeathCnt;
 	}
 
 	public String getStdDay() {
@@ -32,20 +36,36 @@ public class DaySido {
 		this.sido = sido;
 	}
 
-	public int getDefCnt() {
-		return defCnt;
+	public int getDayDefCnt() {
+		return dayDefCnt;
 	}
 
-	public void setDefCnt(int defCnt) {
-		this.defCnt = defCnt;
+	public void setDayDefCnt(int dayDefCnt) {
+		this.dayDefCnt = dayDefCnt;
 	}
 
-	public int getDeathCnt() {
-		return deathCnt;
+	public int getDayDeathCnt() {
+		return dayDeathCnt;
 	}
 
-	public void setDeathCnt(int deathCnt) {
-		this.deathCnt = deathCnt;
+	public void setDayDeathCnt(int dayDeathCnt) {
+		this.dayDeathCnt = dayDeathCnt;
+	}
+
+	public int getTotalDefCnt() {
+		return totalDefCnt;
+	}
+
+	public void setTotalDefCnt(int totalDefCnt) {
+		this.totalDefCnt = totalDefCnt;
+	}
+
+	public int getTotalDeathCnt() {
+		return totalDeathCnt;
+	}
+
+	public void setTotalDeathCnt(int totalDeathCnt) {
+		this.totalDeathCnt = totalDeathCnt;
 	}
 
 }

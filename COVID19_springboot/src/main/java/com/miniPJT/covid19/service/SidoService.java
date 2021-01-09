@@ -13,4 +13,6 @@ public interface SidoService {
 	public List<TotalSido> selectTotal(String today) throws Exception;
 	public List<DaySido> selectToday(String today) throws Exception;
 	public TotalSido selectYesterdayTotal(Map<String, String> yTotal) throws Exception;
+	public DaySido selectYesterdayToday(Map<String, String> yTotal) throws Exception;
+	public List<TotalSido> selectWeek() throws Exception;
 }
