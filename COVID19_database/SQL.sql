@@ -4,12 +4,18 @@ USE covid19;
 CREATE TABLE day_sido (
 	stdDay varchar(100) not null,
     sido varchar(100) not null,
-    defCnt int not null,
-    deathCnt int not null
+    dayDefCnt int not null,
+    dayDeathCnt int not null,
+    totalDefCnt int not null,
+    totalDeathCnt int not null
 );
 CREATE TABLE total_sido (
-	defCnt int not null,
-    deathCnt int not null
+	stdDay varchar(100) not null,
+    sido varchar(100) not null,
+	dayDefCnt int not null,
+    dayDeathCnt int not null,
+    totalDefCnt int not null,
+    totalDeathCnt int not null
 );
 CREATE TABLE day_global (
 	stdDay varchar(100) not null,
@@ -19,6 +25,7 @@ CREATE TABLE day_global (
     deathCnt int not null
 );
 CREATE TABLE total_global (
+	stdDay varchar(100) not null,
 	defCnt int not null,
     deathCnt int not null
 );
