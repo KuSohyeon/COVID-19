@@ -39,10 +39,6 @@ import axios from 'axios';
             yAxes: [{
               ticks: {
                 beginAtZero: false,
-                max: 1000000,
-                min : 100000,
-                fontSize: 14,
-                
               },
               gridLines: {
                 display: true
