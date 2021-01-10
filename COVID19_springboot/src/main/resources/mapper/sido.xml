@@ -28,7 +28,7 @@
 	</insert>
 	
 	<select id="selectYesterdayTotal" parameterType="map" resultType="TotalSido">
-		select defCnt, deathCnt, sido
+		select dayDefCnt, dayDeathCnt, sido, stdDay, totalDefCnt, totalDeathCnt
 		from total_sido
 		where stdDay = #{stdDay}
 		and sido = #{sido}
