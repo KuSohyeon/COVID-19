@@ -2,7 +2,9 @@
   <v-container>
     <div>
       <korea-total></korea-total>
+      <br>
       <korea-graph></korea-graph>
+      <br>
       <korea-list></korea-list>
     </div>
   </v-container>
